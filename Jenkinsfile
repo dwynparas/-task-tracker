@@ -24,7 +24,7 @@ pipeline {
 
         stage('Unit Test') {
             steps {
-                sh 'npx jest tests/task.test.js --runInBand'
+                sh 'JEST_JUNIT_OUTPUT_NAME=junit-unit.xml npx jest tests/task.test.js --runInBand'
             }
         }
 
@@ -37,7 +37,7 @@ pipeline {
 
         stage('UI Test') {
             steps {
-                sh 'npx jest tests/e2e/home.test.js --runInBand'
+                sh 'JEST_JUNIT_OUTPUT_NAME=junit-ui.xml npx jest tests/e2e/home.test.js --runInBand'
             }
         }
 
@@ -57,7 +57,7 @@ pipeline {
 
     post {
         always {
-            junit 'junit.xml'
+            junit 'junit-*.xml'
         }
     }
 }
