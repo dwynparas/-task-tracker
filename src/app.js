@@ -46,7 +46,7 @@ app.get('/', (req, res) => {
         </head>
         <body>
             <h1>Task Tracker</h1>
-            <p>Welcome to the Task Tracker application.</p>
+            <p>Welcome to the Final Task Tracker application.</p>
             <button id="add-task">Add Task</button>
         </body>
         </html>
