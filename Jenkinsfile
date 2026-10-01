@@ -24,7 +24,8 @@ pipeline {
 
         stage('Unit Test') {
             steps {
-                sh 'JEST_JUNIT_OUTPUT_NAME=junit-unit.xml npx jest tests/task.test.js --runInBand'
+                sh 'npx jest tests/task.test.js --runInBand --reporters=default --reporters=jest-junit'
+                sh 'mv junit.xml junit-unit.xml'
             }
         }
 
@@ -37,7 +38,8 @@ pipeline {
 
         stage('UI Test') {
             steps {
-                sh 'JEST_JUNIT_OUTPUT_NAME=junit-ui.xml npx jest tests/e2e/home.test.js --runInBand'
+                sh 'npx jest tests/e2e/home.test.js --runInBand --reporters=default --reporters=jest-junit'
+                sh 'mv junit.xml junit-ui.xml'
             }
         }
 
